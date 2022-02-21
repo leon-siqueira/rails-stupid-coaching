@@ -1,0 +1,27 @@
+<%
+def coach_answer(your_message)
+  if your_message == "I am going to work right now!"
+    return ""
+  elsif your_message[your_message.length - 1] == "?"
+    return "Silly question, get dressed and go to work!"
+  else
+    return "I don't care, get dressed and go to work!"
+  end
+end
+%>
+
+<div class="container d-flex flex-column align-items-center justify-content-center h-100">
+<div class="col-9 bg-light p-3 pb-1 border-start border-5 border-grey mb-3">
+  <p><%= params[:question] %></p>
+  <p class="fst-italic">- You</p>
+</div>
+<% unless coach_answer(params[:question]).empty? %>
+  <div class="col-9 light-yellow p-3 pb-1 border-start border-5 border-warning">
+    <p class="mb-3"><%= coach_answer(params[:question])%> </p>
+    <p class="fst-italic">- Your coach</p>
+  </div>
+<% end %>
+<%=link_to 'Ask a new question', '/questions', class: 'mt-5'%>
+
+
+</div>
